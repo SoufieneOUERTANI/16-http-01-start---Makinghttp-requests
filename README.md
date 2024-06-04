@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## links :
+    https://academind.com/tutorials/hide-javascript-code
+    https://academind.com/tutorials/building-a-restful-api-with-nodejs
+    https://firebase.google.com/
+
+## To start the project  
+
+### FireBase RealTime DatBase
+
+    Account : soufiene.ouertani@gmail.com
+    Database : ng-complete-guide
+    url : https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/
