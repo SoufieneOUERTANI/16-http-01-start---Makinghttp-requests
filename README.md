@@ -38,3 +38,29 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     Account : soufiene.ouertani@gmail.com
     Database : ng-complete-guide
     url : https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/
+
+    
+    Compte FireBase :
+    https://firebase.google.com/
+    
+    Console FireBase :
+    https://console.firebase.google.com/
+
+    Overview de la base de données ng-complete-guide-e9292 :
+    https://console.firebase.google.com/project/ng-complete-guide-e9292/
+    
+    lien d'accès aux données de la base de données :
+    https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/
+    
+    lien d'accès aux APIs de la base de données :
+    https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/post.json
+
+    To avoid the 401 http error, rules for the database have to be :
+    {
+        "rules": {
+            ".read": "true",
+            ".write": "true"
+        }
+    }
+
+

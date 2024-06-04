@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,12 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   loadedPosts = [];
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   ngOnInit() {}
 
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
-    console.log(postData);
   }
 
   onFetchPosts() {
