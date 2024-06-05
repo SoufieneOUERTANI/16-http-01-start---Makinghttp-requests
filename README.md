@@ -68,3 +68,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
     this.httpClient.post('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData).subscribe(responseData => console.log(responseData))
 
+## 343. Getting data : HttpClientModule, HttpClient, httpClient.get(..).subscribe(..)
+
+    this.httpClient.get('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+    .subscribe(responseData => console.log(responseData))
