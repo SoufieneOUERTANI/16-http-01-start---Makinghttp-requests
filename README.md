@@ -64,3 +64,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     }
 
 
+## 342. Sending a POST Request : HttpClientModule, HttpClient, httpClient.post(..).subscribe(..)
+
+    this.httpClient.post('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData).subscribe(responseData => console.log(responseData))
+
