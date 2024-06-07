@@ -84,3 +84,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
       }
       return postArray
     } ))
+
+## 345. Using Types with the HttpClient :
+
+    export interface Post {
+        title: string; 
+        content: string; 
+        id? : string;
+    }
+
+    onCreatePost(postData: Post) {
+
+    const postArray : Post[] = [];
+
+1ere facon de faire :
+
+    .pipe(map((responseData :{[key :string]:any}) => { 
