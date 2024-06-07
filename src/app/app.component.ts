@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   onCreatePost(postData: Post) {
     console.log(postData);
-    this.httpClient.post('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData)
+    this.httpClient.post<{name : string}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData)
     // The post request is sent only when you subscribe
     .subscribe(responseData => console.log(responseData)) 
     // You don't need to manage the unsubscription as it finishs as soon as the request finishs, 
@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
   }
 
   private fetchPosts(){
-    this.httpClient.get('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
-    .pipe(map((responseData :{[key :string]:any}) => { 
+    this.httpClient.get<{[key : string ]: Post}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+    .pipe(map((responseData) => { 
       const postArray : Post[] = [];
       for(const key in responseData){
         if(responseData.hasOwnProperty(key)){

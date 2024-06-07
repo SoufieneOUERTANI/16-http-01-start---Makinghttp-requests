@@ -99,4 +99,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 1ere facon de faire :
 
-    .pipe(map((responseData :{[key :string]:any}) => { 
+    .pipe(map((responseData :{[key :string]:any}) => {
+
+2eme facon de faire :
+
+    // {name : string} : is the return type
+    this.httpClient.post<{name : string}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData)
+
+    // {[key : string ]: Post} : is the return type
+    this.httpClient.get<{[key : string ]: Post}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+
+    .pipe(map((responseData) => { 
+
