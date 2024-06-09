@@ -111,3 +111,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
     .pipe(map((responseData) => { 
 
+## 346. Outputting Posts
+
+    loadedPosts : Post[]= [];
+
+    ngOnInit() {this.fetchPosts()}
+
+    .subscribe(responseData => {
+      console.log(responseData);
+      this.loadedPosts = responseData;
+    })
+
+    <p *ngIf="loadedPosts.length <1">{{loadedPosts.length}}>No posts available!</p>
+    <ul class="list-group" *ngIf="loadedPosts.length >0">
+    <li class="list-group-item" *ngFor="let post of loadedPosts">
+        <h3>{{post.title}}</h3>
+        <p>{{post.content}}</p>
+    </li>
+    </ul>

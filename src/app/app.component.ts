@@ -9,11 +9,11 @@ import { Post } from './post.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts : Post[]= [];
 
   constructor(private httpClient : HttpClient) {}
 
-  ngOnInit() {}
+  ngOnInit() {this.fetchPosts()}
 
   onCreatePost(postData: Post) {
     console.log(postData);
@@ -43,6 +43,9 @@ export class AppComponent implements OnInit {
       }
       return postArray
     } ))
-    .subscribe(responseData => console.log(responseData))
+    .subscribe(responseData => {
+      console.log(responseData);
+      this.loadedPosts = responseData;
+    })
   }
 }
