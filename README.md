@@ -153,3 +153,29 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     Petite erreur dans la section précédente corrigée dans cette section :
         <p *ngIf="loadedPosts.length <1">{{loadedPosts.length}}>No posts available!</p>
         <p *ngIf="loadedPosts.length <1 && !isFetching">No posts available!</p>
+
+## 348. Using a Service for Http Requests - ## 349. Services & Components Working Together
+    We may also use different alternatives :
+    1 - Using a subject in the PostService and we subsucribe to it in the AppComponent, suitable in case of mutiple components using the subject
+    2- Returning the Observable from the PostService, and subsribe to it in the AppComponent, suitable in case of one component using the subject
+
+    We will use the 2nd alternative  
+
+    constructor(private httpClient : HttpClient, private postService : PostService ) {}
+
+    ngOnInit() {
+        this.isFetching = true;
+        this.postService.fetchPosts().subscribe(responseData => {
+            console.log(responseData);
+            this.loadedPosts = responseData;
+            this.isFetching = false;
+        })
+    }
+
+    this.postService.createAndStorePoste(postData.title, postData.content);
+
+    this.postService.fetchPosts().subscribe(responseData => {
+
+
+
+
