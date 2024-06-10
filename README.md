@@ -129,3 +129,27 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         <p>{{post.content}}</p>
     </li>
     </ul>
+
+    Petite erreur ici corrigée dans la section suivante :
+        <p *ngIf="loadedPosts.length <1">{{loadedPosts.length}}>No posts available!</p>
+        <p *ngIf="loadedPosts.length <1 && !isFetching">No posts available!</p>
+
+## 347. Showing a Loading Indicator
+
+    <p *ngIf="loadedPosts.length <1 && !isFetching">{{loadedPosts.length}}>No posts available!</p>
+    <ul class="list-group" *ngIf="loadedPosts.length >0 && !isFetching">
+
+    <p *ngIf="isFetching">Loading...</p>
+
+    isFetching = false;
+
+    this.isFetching = true;
+
+    .subscribe(responseData => {
+      console.log(responseData);
+      this.loadedPosts = responseData;
+      this.isFetching = false;
+
+    Petite erreur dans la section précédente corrigée dans cette section :
+        <p *ngIf="loadedPosts.length <1">{{loadedPosts.length}}>No posts available!</p>
+        <p *ngIf="loadedPosts.length <1 && !isFetching">No posts available!</p>
