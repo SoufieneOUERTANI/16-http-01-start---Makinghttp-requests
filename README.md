@@ -176,6 +176,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
     this.postService.fetchPosts().subscribe(responseData => {
 
+## 350. Sending a DELETE Request : httpClient.delete, postService.deletePosts()
 
+    this.postService.deletePosts().subscribe(
+      () => {
+        this.loadedPosts=[]
+      }
+    );
 
+    deletePosts(){
+      return this.httpClient.delete('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json');
+    }
 

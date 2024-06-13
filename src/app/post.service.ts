@@ -34,4 +34,8 @@ export class PostService {
         // //   this.loadedPosts = responseData;
         // })
     }
+
+    deletePosts(){
+      return this.httpClient.delete('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json');
+    }
 }
