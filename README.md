@@ -188,3 +188,27 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
       return this.httpClient.delete('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json');
     }
 
+## 351. Handling Errors :
+
+    firebase  :  Modifier => ".read": "false",
+
+    {
+        "rules": {
+            ".read": "false",
+            ".write": "true"
+        }
+    }
+
+    error = null;
+
+      }, error => {
+        this.error = error.message;
+        console.log(error);
+      }
+    )
+
+    <p *ngIf="isFetching && !error">Loading...</p>
+    <div class="alert alert-danger" *ngIf="error">
+        <h1>An error occured</h1>
+        <p>{{error}}</p>
+    </div>  
