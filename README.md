@@ -226,3 +226,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     error => {
         this.error.next(error.message)
     }
+
+## 353. Using the catchError Operator : catchError, throwError
+
+          }),
+        catchError(errorRes => {
+            return throwError(errorRes);
