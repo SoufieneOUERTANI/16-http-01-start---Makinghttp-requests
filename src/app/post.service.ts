@@ -1,10 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { Subject, map } from "rxjs";
 import { Post } from "src/app/post.model";
 
 @Injectable({providedIn:'root'})
 export class PostService {
+    error = new Subject<string>;
 
     constructor(private httpClient : HttpClient){}
 
@@ -13,7 +14,11 @@ export class PostService {
         console.log(postData);
         this.httpClient.post<{name : string}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData)
         // The post request is sent only when you subscribe
-        .subscribe(responseData => console.log(responseData)) 
+        .subscribe(responseData => console.log(responseData), 
+        error => {
+          this.error.next(error.message)
+        }
+      ) 
         // You don't need to manage the unsubscription as it finishs as soon as the request finishs, 
         // and the observable is provided by Angular, so the unsubscription is handled by Angular
     }

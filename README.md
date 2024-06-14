@@ -212,3 +212,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         <h1>An error occured</h1>
         <p>{{error}}</p>
     </div>  
+
+## 352. Using Subjects for Error Handling : 
+
+    private errorSub : Subscription;
+
+    this.errorSub = this.postService.error.subscribe(errorMesssage => this.error= errorMesssage);
+
+    ngOnDestroy(): void {
+        this.errorSub.unsubscribe();
+    }
+
+    error => {
+        this.error.next(error.message)
+    }
