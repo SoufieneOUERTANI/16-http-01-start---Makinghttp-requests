@@ -234,3 +234,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
             return throwError(errorRes);
 
 ## 354. Error Handling & UX :
+
+## 355. Setting Headers :
+
+    firebase  :  Modifier => ".read": "true",
+
+    {
+        "rules": {
+            ".read": "true",
+            ".write": "true"
+        }
+    }
+
+    return this.httpClient.get<{[key : string ]: Post}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
+        ,{
+        headers: new HttpHeaders({"Custom-header" : "Hello", "Soufiene-header" : "Soufiene Hello"})
+        }
+
+
