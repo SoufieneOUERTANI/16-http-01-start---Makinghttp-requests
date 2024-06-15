@@ -284,3 +284,18 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
     // responseType: 'arraybuffer' | 'blob' | 'json' | 'text'
     responseType : 'json'
+
+## 359. Introducing Interceptors :
+
+    import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+    import { Observable } from "rxjs";
+
+    export class AuthInterceptorService implements HttpInterceptor{
+        intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+            console.log("Request is on its way"+((req !== null && req.body !== null)?" => "+JSON.stringify(req.body):""))
+            return next.handle(req);
+        }
+    }
+
+    providers: [{provide : HTTP_INTERCEPTORS, useClass : AuthInterceptorService, multi :true}],
+
