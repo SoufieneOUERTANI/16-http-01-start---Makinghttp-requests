@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Subject, catchError, map, throwError } from "rxjs";
+import { EventType } from "@angular/router";
+import { Subject, catchError, map, tap, throwError } from "rxjs";
 import { Post } from "src/app/post.model";
 
 @Injectable({providedIn:'root'})
@@ -12,9 +13,15 @@ export class PostService {
     createAndStorePoste(title : string, content : string){
         const postData : Post = {title : title, content : content}
         console.log(postData);
-        this.httpClient.post<{name : string}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', postData)
+        this.httpClient.post<{name : string}>('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json', 
+          postData, {
+            // observe : 'body'
+            observe : 'response'
+          }
+        )
         // The post request is sent only when you subscribe
-        .subscribe(responseData => console.log(responseData), 
+        // .subscribe(responseData => console.log(responseData), 
+        .subscribe(responseData => console.log(responseData.body), 
         error => {
           this.error.next(error.message)
         }
@@ -54,6 +61,14 @@ export class PostService {
     }
 
     deletePosts(){
-      return this.httpClient.delete('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json');
+      return this.httpClient.delete('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
+        ,{
+          observe : 'events'
+        }
+      ).pipe(tap(event => {
+        console.log("event.type : HttpEventType["+event.type+"] : "+HttpEventType[event.type]);
+        console.log(event);
+      }))
+      ;
     }
 }
