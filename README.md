@@ -280,3 +280,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     }))
     ;
 
+## 358. Changing the Response Body Type :
+
+    // responseType: 'arraybuffer' | 'blob' | 'json' | 'text'
+    responseType : 'json'

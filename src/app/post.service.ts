@@ -63,7 +63,9 @@ export class PostService {
     deletePosts(){
       return this.httpClient.delete('https://ng-complete-guide-e9292-default-rtdb.europe-west1.firebasedatabase.app/posts.json'
         ,{
-          observe : 'events'
+          observe : 'events',
+          // responseType: 'arraybuffer' | 'blob' | 'json' | 'text'
+          responseType : 'json'
         }
       ).pipe(tap(event => {
         console.log("event.type : HttpEventType["+event.type+"] : "+HttpEventType[event.type]);
