@@ -304,3 +304,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     const modifiedRequest = req.clone({headers : req.headers.append('Auth', 'xyz')});
     return next.handle(modifiedRequest);
 
+## 361. Response Interceptors : .pipe(...
+
+    return next.handle(modifiedRequest).pipe(tap(event => {
+        if(event.type === HttpEventType.Response){
+            console.log('response arrived, body data : '+ JSON.stringify(event.body))
+        }
+    }));
+
