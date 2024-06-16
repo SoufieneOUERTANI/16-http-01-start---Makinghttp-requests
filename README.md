@@ -312,3 +312,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         }
     }));
 
+## 362. Multiple Interceptors : The order matters in the : provide : HTTP_INTERCEPTORS, useClass : AuthInterceptorService, multi :true
+
+    {provide : HTTP_INTERCEPTORS, useClass : AuthInterceptorService, multi :true},
+    {provide : HTTP_INTERCEPTORS, useClass : LoggingInterceptorService, multi :true},
